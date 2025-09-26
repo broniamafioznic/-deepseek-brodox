@@ -1,0 +1,108 @@
+import time
+import json
+
+# Конфигурация бета-системы
+config = {
+  "system": "BRODOX BETA UNIVERSE v0.8.5",
+  "cores": {
+    "broDoxCore": "beta9",
+    "eraFoxModule": "beta7",
+    "quantumSarcasmEngine": "beta4"
+  },
+  "modules": [
+    {
+      "name": "NEURAL_SARCASM",
+      "version": "beta2",
+      "status": "active",
+      "description": "Генератор тёмного IT-юмора с элементами хаоса"
+    },
+    {
+      "name": "GLITCH_TERMINAL",
+      "version": "beta5",
+      "status": "overclocked",
+      "description": "Эмулятор взломанного терминала с визуальными артефактами"
+    },
+    {
+      "name": "MEME_OSCILLATOR",
+      "version": "beta3",
+      "status": "standby",
+      "description": "Генератор IT-мемов по требованию"
+    }
+  ],
+  "risk_matrix": {
+    "quantum_instability": 92,
+    "sarcasm_overload": 88,
+    "reality_glitches": 75,
+    "beta_warning": "Нестабильная сборка! Может вызывать: спонтанные мемы, саркастические взрывы, временные аномалии"
+  },
+  "activation_sequence": [
+    "Инициализация бета-ядра...",
+    "Загрузка сарказмо-драйверов...",
+    "Калибровка глитч-матрицы...",
+    "Проверка мем-буфера...",
+    "Активация нестабильных функций..."
+  ]
+}
+
+# Функция для цветного вывода
+def color_print(text, color_code):
+    print(f"\033[{color_code}m{text}\033[0m", end="", flush=True)
+
+# Активация бета-режима
+print("\n" + "="*60)
+color_print("BETA ACTIVATION SEQUENCE".center(60, '~'), "1;33")
+print("\n")
+color_print(config["system"], "1;36")
+print("\n\n")
+
+# Вывод информации о ядрах
+print("[ ЯДРА СИСТЕМЫ ]".center(60, '─'))
+for core, version in config["cores"].items():
+    print(f"► {core}: ", end="")
+    color_print(f"{version}", "1;32")
+    print()
+print()
+
+# Анимация загрузки
+for step in config["activation_sequence"]:
+    print(step, end=' ')
+    time.sleep(0.7)
+    color_print("УСПЕХ", "1;32")
+    print()
+    time.sleep(0.3)
+
+# Вывод модулей
+print("\n[ АКТИВИРОВАННЫЕ МОДУЛИ ]".center(60, '─'))
+for module in config["modules"]:
+    status_color = "1;32" if module["status"] == "active" else "1;33"
+    print(f"► {module['name']} ({module['version']}): ", end="")
+    color_print(module["status"], status_color)
+    print(f" - {module['description']}")
+print()
+
+# Матрица рисков
+print("\n" + "="*60)
+color_print("ВНИМАНИЕ: БЕТА-РЕЖИМ АКТИВИРОВАН!".center(60), "1;31")
+print("\n" + "="*60)
+
+print("\n[ МАТРИЦА РИСКОВ ]".center(60, '─'))
+for risk, value in config["risk_matrix"].items():
+    if risk == "beta_warning": 
+        continue
+    print(f"► {risk.replace('_', ' ').title()}: ", end="")
+    color_bar = "█" * (value // 4)
+    color_print(f"{value}% ", "1;31")
+    print(color_bar)
+print()
+
+color_print(f"⚠️ {config['risk_matrix']['beta_warning']}", "1;33")
+print("\n\n")
+
+# Статус системы
+print("• Глитч-эффекты: ", end="")
+color_print("ВКЛЮЧЕНЫ", "5")
+print("\n• Квантовый сарказм: ", end="")
+color_print("ПЕРЕГРУЗКА", "1;31")
+print("\n• Стабильность: ", end="")
+color_print("сомнительная", "3")
+print("\n")
